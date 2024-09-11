@@ -3,7 +3,7 @@
 FROM ibm-semeru-runtimes:open-17-jdk-focal
 
 # RUN apk add --no-cache gcompat # need to make snappy codec work
-RUN apt update && apt install glibc libc6 libc6-dev -y
+RUN apt update && apt install libc6 libc6-dev -y
 RUN addgroup -S kafkaui && adduser -S kafkaui -G kafkaui
 
 # creating folder for dynamic config usage (certificates uploads, etc)
