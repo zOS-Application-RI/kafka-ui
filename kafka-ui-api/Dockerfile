@@ -1,11 +1,9 @@
 #FROM azul/zulu-openjdk-alpine:17-jre-headless
-FROM azul/zulu-openjdk-alpine@sha256:a36679ac0d28cb835e2a8c00e1e0d95509c6c51c5081c7782b85edb1f37a771a
+# FROM azul/zulu-openjdk-alpine@sha256:a36679ac0d28cb835e2a8c00e1e0d95509c6c51c5081c7782b85edb1f37a771a
+FROM ibm-semeru-runtimes:open-17-jdk-jammy
 
-RUN apk add --no-cache \
-    # snappy codec
-    gcompat \
-    # configuring timezones
-    tzdata
+# RUN apk add --no-cache gcompat # need to make snappy codec work
+RUN apt update && apt install glibc glibc-tools -y
 RUN addgroup -S kafkaui && adduser -S kafkaui -G kafkaui
 
 # creating folder for dynamic config usage (certificates uploads, etc)
